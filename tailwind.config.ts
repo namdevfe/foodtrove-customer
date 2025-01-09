@@ -7,14 +7,24 @@ const config: Config = {
     './src/app/**/*.{js,ts,jsx,tsx,mdx}'
   ],
   theme: {
-    colors: {
-      primary: '#F53E32'
+    container: {
+      center: true,
+      padding: {
+        DEFAULT: '1rem',
+        sm: '2rem',
+        lg: '4rem',
+        xl: '5rem',
+        '2xl': '6rem'
+      }
     },
     extend: {
       colors: {
         background: 'var(--background)',
         foreground: 'var(--foreground)'
       }
+      // height: {
+      //   header: '142px'
+      // }
     }
   },
   plugins: []
