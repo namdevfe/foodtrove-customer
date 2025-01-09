@@ -1,0 +1,35 @@
+.menu {
+  @apply hidden md:flex items-center;
+
+  &__item {
+    a {
+      --pd-y: 8px;
+      --pd-x: 12px;
+      position: relative;
+      padding: var(--pd-y) var(--pd-x);
+
+      &::after {
+        position: absolute;
+        left: var(--pd-x);
+        bottom: 0;
+        content: '';
+        display: block;
+        width: calc(100% - var(--pd-x) * 2);
+        height: 2px;
+        @apply transition-transform duration-300 bg-black scale-x-0 will-change-transform origin-right;
+      }
+
+      &:hover::after {
+        @apply scale-x-100 origin-left;
+      }
+    }
+
+    &.--active {
+      a {
+        &::after {
+          @apply scale-x-100;
+        }
+      }
+    }
+  }
+}

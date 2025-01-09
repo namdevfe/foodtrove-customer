@@ -1,0 +1,15 @@
+.toggle-menu-button {
+  @apply block md:hidden w-[18px] h-[14px] relative;
+
+  span {
+    @apply block bg-black w-full h-[2px] absolute top-2/4 left-0 -translate-y-2/4;
+  }
+
+  &::before {
+    @apply content-[''] block w-full h-[2px] bg-black absolute top-0 left-0;
+  }
+
+  &::after {
+    @apply content-[''] block w-full h-[2px] bg-black absolute bottom-0 left-0;
+  }
+}
