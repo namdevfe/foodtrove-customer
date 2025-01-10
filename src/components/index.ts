@@ -3,5 +3,7 @@ import Header from '@/components/Header'
 import Menu from '@/components/Menu'
 import Search from '@/components/Search'
 import ToggleMenuButton from '@/components/ToggleMenuButton'
+import Logo from '@/components/Logo'
+import Button from '@/components/Button'
 
-export { Footer, Header, Menu, Search, ToggleMenuButton }
+export { Footer, Header, Menu, Search, ToggleMenuButton, Logo, Button }
