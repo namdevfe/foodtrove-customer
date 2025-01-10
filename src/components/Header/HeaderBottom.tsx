@@ -1,5 +1,4 @@
-import Link from 'next/link'
-import { Menu, Search, ToggleMenuButton } from '@/components'
+import { Logo, Menu, Search, ToggleMenuButton } from '@/components'
 import Image from 'next/image'
 
 const HeaderBottom = () => {
@@ -7,9 +6,7 @@ const HeaderBottom = () => {
     <div className='container py-6 flex items-center justify-between'>
       <div className='flex items-center gap-4'>
         <ToggleMenuButton />
-        <Link href='/' className='text-3xl font-bold uppercase'>
-          Shop.co
-        </Link>
+        <Logo />
       </div>
 
       <Menu />
