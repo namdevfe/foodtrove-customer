@@ -2,9 +2,10 @@ import { cn } from '@/utils'
 import { cva, VariantProps } from 'class-variance-authority'
 import Link from 'next/link'
 import React, { ButtonHTMLAttributes, forwardRef } from 'react'
+import { Loading } from '@/components'
 
 const buttonVariants = cva(
-  'flex items-center justify-center w-fit font-medium rounded-[62px] text-base',
+  'flex items-center justify-center gap-4 w-fit font-medium rounded-[62px] text-base text-nowrap',
   {
     variants: {
       variant: {
@@ -31,39 +32,22 @@ interface IButtonProps
   extends ButtonHTMLAttributes<HTMLButtonElement>,
     VariantProps<typeof buttonVariants> {
   href?: string
+  loading?: boolean
 }
 
-// const Button = ({
-//   children,
-//   className = '',
-//   variant,
-//   size,
-//   href,
-//   ...props
-// }: IButtonProps) => {
-//   if (href) {
-//     return (
-//       <Link
-//         href={href}
-//         className={cn(buttonVariants({ variant, size, className }))}
-//       >
-//         {children}
-//       </Link>
-//     )
-//   }
-
-//   return (
-//     <button
-//       className={cn(buttonVariants({ variant, size, className }))}
-//       {...props}
-//     >
-//       {children}
-//     </button>
-//   )
-// }
-
 const Button = forwardRef<HTMLButtonElement, IButtonProps>(
-  ({ children, className = '', variant, size, href, ...props }, ref) => {
+  (
+    {
+      children,
+      className = '',
+      variant,
+      size,
+      href,
+      loading = false,
+      ...props
+    },
+    ref
+  ) => {
     if (href) {
       return (
         <Link
@@ -74,12 +58,15 @@ const Button = forwardRef<HTMLButtonElement, IButtonProps>(
         </Link>
       )
     }
+
     return (
       <button
         className={cn(buttonVariants({ variant, size, className }))}
         ref={ref}
+        disabled={loading}
         {...props}
       >
+        {loading && <Loading />}
         {children}
       </button>
     )
