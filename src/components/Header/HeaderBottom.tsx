@@ -3,7 +3,7 @@ import Image from 'next/image'
 
 const HeaderBottom = () => {
   return (
-    <div className='container py-6 flex items-center justify-between'>
+    <div className='container h-full py-6 flex items-center justify-between'>
       <div className='flex items-center gap-4'>
         <ToggleMenuButton />
         <Logo />

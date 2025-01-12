@@ -2,10 +2,11 @@ import type { Metadata } from 'next'
 import { Poppins } from 'next/font/google'
 import { MainLayout } from '@/layouts'
 import '@/styles/globals.scss'
+import { Bounce, ToastContainer } from 'react-toastify'
 
 export const metadata: Metadata = {
-  title: 'Food Trove',
-  description: 'Food Trove App is built by Quốc Nam'
+  title: 'Shopping App',
+  description: 'Shopping App is built by Quốc Nam'
 }
 
 const poppins = Poppins({
@@ -21,6 +22,19 @@ export default function RootLayout({
   return (
     <html lang='en'>
       <body className={poppins.className} suppressHydrationWarning>
+        <ToastContainer
+          position='bottom-right'
+          autoClose={5000}
+          hideProgressBar={false}
+          newestOnTop={false}
+          closeOnClick={false}
+          rtl={false}
+          pauseOnFocusLoss
+          draggable
+          pauseOnHover
+          theme='colored'
+          transition={Bounce}
+        />
         <MainLayout>{children}</MainLayout>
       </body>
     </html>

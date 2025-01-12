@@ -132,7 +132,7 @@ const FOOTER_MENUS = [
 
 const Footer = () => {
   return (
-    <footer className='fixed bottom-0 left-0 right-0 -z-10 w-full bg-[#F0F0F0]'>
+    <footer className='w-full bg-[#F0F0F0]'>
       <div className='container h-full relative pt-[140px] pb-[82px]'>
         {/* Top */}
         <div className='px-16 py-9 rounded-[20px] bg-black absolute top-0 -translate-y-2/4 left-[1rem] lg:left-[4rem] xl:left-[5rem] 2xl:left-[6rem] right-[1rem] lg:right-[4rem] xl:right-[5rem] 2xl:right-[6rem]'>
