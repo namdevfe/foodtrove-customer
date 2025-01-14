@@ -1,7 +1,7 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 'use client'
 
 import { Button } from '@/components'
+import { authService } from '@/services'
 import { cn } from '@/utils'
 import Image from 'next/image'
 import Link from 'next/link'
@@ -19,24 +19,14 @@ const RegisterForm = () => {
   const [loading, setLoading] = useState<boolean>(false)
 
   const onSubmit = async (data: any) => {
-    // Call Register API
+    const payload = { ...data }
     setLoading(true)
     try {
-      const payload = { ...data }
-      const res = await fetch('http://localhost:8017/api/v1/auth/register', {
-        method: 'POST',
-        body: JSON.stringify(payload),
-        headers: {
-          Accept: 'application/json',
-          'Content-Type': 'application/json'
-        }
-      })
-      const resData = await res.json()
+      const res = await authService.register(payload)
 
-      // Notification
-      if (resData?.statusCode === 201 && resData?.data?._id) {
+      if (res.statusCode === 201 && res.data?._id) {
         reset()
-        toast.success(resData?.message || 'Register account is successfully.', {
+        toast.success(res.message, {
           position: 'bottom-right',
           autoClose: 5000,
           hideProgressBar: false,
@@ -47,12 +37,10 @@ const RegisterForm = () => {
           theme: 'colored',
           transition: Bounce
         })
-      } else {
-        throw resData
       }
     } catch (error: any) {
       console.log('🚀error---->', error)
-      toast.error(error.message || 'Register account is successfully.', {
+      toast.error(error.message, {
         position: 'bottom-right',
         autoClose: 5000,
         hideProgressBar: false,
@@ -64,9 +52,7 @@ const RegisterForm = () => {
         transition: Bounce
       })
     } finally {
-      setTimeout(() => {
-        setLoading(false)
-      }, 3000)
+      setLoading(false)
     }
   }
 
