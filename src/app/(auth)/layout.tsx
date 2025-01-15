@@ -7,7 +7,7 @@ interface IAuthLayoutProps {
 
 const AuthLayout = ({ children }: IAuthLayoutProps) => {
   return (
-    <main className='pt-[238px] pb-[230px] md:pt-[276px]'>
+    <main className='pt-[216px] pb-[216px]'>
       <div className='grid grid-cols-12 gap-5 h-full'>
         <div className='col-span-7 h-full hidden md:block'>
           <Image
